@@ -3,7 +3,6 @@ extends Node
 
 var score = 0
 @onready var score_label: Label = $ScoreLabel
-@onready var player: CharacterBody2D = %Player
 @onready var timer: Timer = $Timer
 
 

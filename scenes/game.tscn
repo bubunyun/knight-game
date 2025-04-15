@@ -237,9 +237,7 @@ text = "you collected X coins."
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="GameManager"]
-
-[node name="Slime" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(442, 30)
+wait_time = 0.6
 
 [node name="TileMapLayers" type="Node" parent="."]
 
@@ -256,7 +254,6 @@ tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wEAAAAAAAE
 tile_set = SubResource("TileSet_lbhrr")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-unique_name_in_owner = true
 position = Vector2(-84, 7)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -325,6 +322,9 @@ libraries = {
 }
 autoplay = "move"
 
+[node name="Slime" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(445, 32)
+
 [node name="Labels" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="Labels"]
@@ -335,8 +335,8 @@ offset_bottom = -5.0
 theme_override_colors/font_color = Color(0.435294, 0.172549, 0.466667, 1)
 theme_override_fonts/font = ExtResource("7_u5sy4")
 theme_override_font_sizes/font_size = 8
-text = "use A to go left
-use D to go right
+text = "use A to go left,
+use D to go right,
 use space to jump!"
 
 [node name="Label5" type="Label" parent="Labels"]
