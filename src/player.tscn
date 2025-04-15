@@ -1,7 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://ciwxyprt53nf8"]
+[gd_scene load_steps=30 format=3 uid="uid://ciwxyprt53nf8"]
 
 [ext_resource type="Texture2D" uid="uid://b6wmrvlybpg7v" path="res://assets/sprites/knight.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://ctf66q1dhp85k" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://ctf66q1dhp85k" path="res://src/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://dfyvmsqrad63x" path="res://src/state_machine.tscn" id="3_21lrq"]
+[ext_resource type="Script" uid="uid://b34il7swex3c5" path="res://src/idle.gd" id="4_pg28d"]
+[ext_resource type="Script" uid="uid://bj3idqa1lmnt4" path="res://src/move.gd" id="5_21lrq"]
+[ext_resource type="Script" uid="uid://b4xv312cy46l4" path="res://src/jump.gd" id="6_21lrq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -186,3 +190,25 @@ frame_progress = 0.710518
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_fjrip")
+
+[node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_21lrq")]
+starting_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("jump_state", "move_state")]
+script = ExtResource("4_pg28d")
+jump_state = NodePath("../jump")
+move_state = NodePath("../run")
+animation_name = "idle"
+
+[node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "jump_state")]
+script = ExtResource("5_21lrq")
+idle_state = NodePath("../idle")
+jump_state = NodePath("../jump")
+animation_name = "run"
+
+[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state")]
+script = ExtResource("6_21lrq")
+idle_state = NodePath("../idle")
+move_state = NodePath("../run")
+jump_force = 300.0
+animation_name = "jump"
