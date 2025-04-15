@@ -248,7 +248,7 @@ layer_1/tile_data = PackedInt32Array(65534, 0, 0, 65535, 0, 0, 131070, 0, 1, 196
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
-position = Vector2(-97, -5)
+position = Vector2(-84, 7)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 1)
@@ -317,7 +317,7 @@ libraries = {
 autoplay = "move"
 
 [node name="Slime" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(447, 32)
+position = Vector2(442, 30)
 
 [node name="Labels" type="Node" parent="."]
 
